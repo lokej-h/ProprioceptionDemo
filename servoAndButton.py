@@ -1,3 +1,8 @@
+# written by lokej-h
+# last modified Thursday Nov 7 2019
+
+'''Initializes, moves and cleans up the GPIO servo test.'''
+
 import threading
 import pigpio
 import time
