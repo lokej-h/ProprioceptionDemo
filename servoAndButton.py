@@ -1,9 +1,13 @@
 import threading
 import pigpio
 import time
+import os
 
 def inits():
     '''initializes our gpio'''
+    print("turning on GPIO deamon")
+    os.system('sudo pigpiod')
+    time.sleep(3)
     print("setting up GPIO")
     global pi
     pi = pigpio.pi()
@@ -39,10 +43,10 @@ def backandforth():
     '''a simple function to move the servo back and forth'''
     print("extending servo")
     pi.set_servo_pulsewidth(18, 2000)
-    time.sleep(7)
+    time.sleep(2.5)
     print("retracting servo")
     pi.set_servo_pulsewidth(18, 1010)
-    time.sleep(7)
+    time.sleep(2.5)
 
 def wait_for_button_up(pin):
     '''stalls the program until button up, will be replaced'''
