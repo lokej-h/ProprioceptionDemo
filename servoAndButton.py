@@ -11,7 +11,6 @@ import os
 SERVOPIN1 = 13
 SERVOPIN2 = 19
 
-
 def inits():
     '''initializes our gpio'''
     print("turning on GPIO deamon")
