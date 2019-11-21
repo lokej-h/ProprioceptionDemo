@@ -1,5 +1,5 @@
 # written by lokej-h
-# last modified Thursday Nov 7 2019
+# last modified Thursday Nov 21 2019
 
 '''Initializes, moves and cleans up the GPIO servo test.'''
 
