@@ -8,8 +8,8 @@ import pigpio
 import time
 import os
 
-SERVOPIN1 = 18
-SERVOPIN2 = 12
+SERVOPIN1 = 13
+SERVOPIN2 = 19
 
 
 def inits():
