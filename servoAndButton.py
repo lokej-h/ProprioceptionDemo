@@ -1,5 +1,5 @@
 # written by lokej-h
-# last modified Thursday Nov 7 2019
+# last modified Thursday Nov 21 2019
 
 '''Initializes, moves and cleans up the GPIO servo test.'''
 
@@ -7,6 +7,10 @@ import threading
 import pigpio
 import time
 import os
+
+SERVOPIN1 = 13
+
+
 
 def inits():
     '''initializes our gpio'''
@@ -19,23 +23,23 @@ def inits():
     print("setting up button")
     pi.set_pull_up_down(15, pigpio.PUD_DOWN)
     pi.set_mode(15, pigpio.INPUT)
-    print("setting up servo")
-    pi.set_mode(18, pigpio.OUTPUT)
+    print("setting up servos")
+    pi.set_mode(SERVOPIN1, pigpio.OUTPUT)
     print("\tmoving servo to a neutral postion, please wait")
-    pi.set_servo_pulsewidth(18, 1010)
-    time.sleep(3)
+    pi.set_servo_pulsewidth(SERVOPIN1, 1010)
+    time.sleep(5)
     print("\tassumed servo in position, PWM off")
-    pi.set_servo_pulsewidth(18, 0)
+    pi.set_servo_pulsewidth(SERVOPIN1, 0)
     print("ready")
     
 def cleanup():
     print("\n\ncleaning up")
     print("moving servo to home")
-    pi.set_servo_pulsewidth(18, 1000)
+    pi.set_servo_pulsewidth(SERVOPIN1, 1000)
     time.sleep(5)
     print("\tdone")
     print("turning off PWM")
-    pi.set_servo_pulsewidth(18, 0)
+    pi.set_servo_pulsewidth(SERVOPIN1, 0)
     print("\tdone")
     print("cleanup complete")
     
@@ -47,10 +51,10 @@ def toggle_state():
 def backandforth():
     '''a simple function to move the servo back and forth'''
     print("extending servo")
-    pi.set_servo_pulsewidth(18, 2000)
+    pi.set_servo_pulsewidth(SERVOPIN1, 2000)
     time.sleep(2.5)
     print("retracting servo")
-    pi.set_servo_pulsewidth(18, 1010)
+    pi.set_servo_pulsewidth(SERVOPIN1, 1010)
     time.sleep(2.5)
 
 def wait_for_button_up(pin):
